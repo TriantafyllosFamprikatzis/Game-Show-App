@@ -21,29 +21,29 @@ let phrases = [
 'Enough is enough'
 ];
 
-//extra make it show among with each phrase also the meaning of it
-
-//Function to loop through the Array of strings
-function getRandomPhrasesAsArray(arr){
- let phrase = '';
- for(let i = 0; i < Math.floor(Math.random() * phrases.length); i +=1){
- phrase = phrases[i];
+//Function to get a random phrase and split it to arrays
+function getRandomPhraseAsArray(arr){
+  let randomPhrase = Math.floor(Math.random() * (arr.length));
+  return arr[randomPhrase].split("");
    }
-  return phrase = phrase.split('');
-  }
+//document.body.innerHTML = getRandomPhraseAsArray(phrases);
 
 
 //Function to display a phrase
 function addPhraseToDisplay(arr){
- for(let i = 0; i < 1; i +=1){
-    const ul = document.getElementsByTagName('ul')[0];
-    const li = document.createElement('li');
-    li.textContent = getRandomPhrasesAsArray(phrases);
+   let ul = document.getElementsByTagName('ul')[0];
+   let li = document.createElement('li');
+  // let text = phrase.value;
+ for(let i = 0; i < li.length; i +=1){
+    li[i].textContent = arr;
     ul.appendChild(li);
-    if (phrases === [a-zA-Z]) {
-      element.classList.add('letter');
-    }
+   
+    // if (i == this) {//DOES NOT WORK
+    //   li.classList.add('letter');
+    li.className = 'letter';
+    
+    // }
  }
 }
-const phraseArray = getRandomPhrasesAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
