@@ -30,15 +30,15 @@ function getRandomPhraseAsArray (arr) {
 //Function to display a phrase
  function addPhraseToDisplay (arr) {
       for (i = 0; i < arr.length; i += 1) {
-         // let letters = /^[A-Za-z]+$/;
-         // let match = arr.match(letters);
+         let letters = /^[A-Za-z]+$/;
+         let match = arr[i].match(letters);
          let li = document.createElement('li');
          let ul = document.getElementsByTagName('ul')[0];
          li.textContent = arr[i];
          ul.appendChild(li); 
-         //   if (match)   {
-         //    li.className = 'letter';
-         // }
+           if (match)   {
+            li.className = 'letter';
+         }
       }
    };
 
@@ -46,32 +46,3 @@ function getRandomPhraseAsArray (arr) {
    const phraseArray = getRandomPhraseAsArray(phrases);
    addPhraseToDisplay(phraseArray);
 
-////////////////////////////
-   var paragraph = 'The quick brown fox jumped over the lazy dog. It barked.';
-   var regex = /^[A-Za-z]+$/;
-   var found = paragraph.match(regex);
-   console.log(found);
-///////////////////////////////////////////
-
-
-
-   //Function to get a random phrase and split it to arrays
-// function getRandomPhraseAsArray (arr) {
-//    let randomPhrase = Math.floor(Math.random() * (arr.length));
-//    return arr[randomPhrase].split("");
-//    }
-
-// // Function to display a phrase
-//  function addPhraseToDisplay (arr) {
-//       for (i = 0; i < arr.length; i += 1) {
-//          let li = document.createElement('li');
-//          let ul = document.getElementsByTagName('ul')[0];
-//          li.textContent = arr[i];
-//          ul.appendChild(li); 
-//          li.className = 'letter';
-//       }
-//    };
-
-//    //Call the functions
-//    const phraseArray = getRandomPhraseAsArray(phrases);
-//    addPhraseToDisplay(phraseArray);
