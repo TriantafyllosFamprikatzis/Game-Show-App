@@ -1,18 +1,19 @@
 //Variables
-const QWERTY = document.getElementById('qwerty');
-const PHRASE = document.getElementById('phrase');
-const BUTTON_RESET = document.querySelector('.btn__reset');
-const OVERLAY = document.getElementById('overlay');
-const LETTERS = document.getElementsByClassName('letter');
-const MISSED = 0;
+const qwerty = document.getElementById('qwerty');
+const phrase = document.getElementById('phrase');
+const buttonReset = document.querySelector('.btn__reset');
+const overlay = document.getElementById('overlay');
+const letters = document.getElementsByClassName('letter');
+let missed = 0;
+
 
 //Hide the overlay by pressing Strat Game 
-BUTTON_RESET.addEventListener('click', () => {
- OVERLAY.style.display = 'none';
+buttonReset.addEventListener('click', () => {
+ overlay.style.display = 'none';
 });
 
 //All phrases in an Array
-const PHRASES = [
+const phrases = [
 'A fool and his money are soon parted',
 'A friend in need is a friend indeed',
 'Beauty is only skin deep',
@@ -43,29 +44,54 @@ create a new li if matches a letter and not a space */
             li.className = 'space';
          }
       }
-   };
+   }
+  //let regex = /^[A-Za-z]+$/.value;
+  //if (arr[i].textContent === )
+
+  
+  //let regex = /^[A-Za-z]+$/;
+  //let value = regex.value;
+  //if (arr[i].textContent === )
+
+
+   //let regex =  /^[A-Za-z]+$/;
+   //if(! regex)
+
 
 //Call the two functions
-const PHRASE_ARRAY = getRandomPhraseAsArray(PHRASES);
-addPhraseToDisplay(PHRASE_ARRAY);
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
 
 
 //Function to check if the button clicked match the letter
- function checkLetter (btn)  {
+function checkLetter(btn) {
    let guessed = null;
-   for(let i = 0; i < LETTERS.length; i += 1){
-      if (btn.target.textContent === LETTERS[i].textContent.toLowerCase()) {
+   for (let i = 0; i < letters.length; i += 1) {
+      if (btn.target.textContent === letters[i].textContent.toLowerCase()) {
          guessed = true;
-         LETTERS[i].className += ' show, chosen';
+         letters[i].className += ' show, chosen';
          btn.target.disabled = true;
       }
-   }return guessed;
- }
+   } return guessed;
+}
 
- QWERTY.addEventListener('click', (event) => {
+qwerty.addEventListener('click', (event) => {
    letterFound = checkLetter(event);
- });
+   if (letterFound === 'null') {
+      missed = 1;
+   }
+   checkWin();
+});
 
 
 
- 
+
+ function checkWin () {
+  if (document.getElementsByClassName('show').length === document.getElementsByClassName('letter').length){
+//If they’re equal, show the overlay screen with the “win” class and appropriate text. 
+     overlay.style.display = '';
+     overlay.className = 'win';
+  }else {
+//the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+  }
+ }
