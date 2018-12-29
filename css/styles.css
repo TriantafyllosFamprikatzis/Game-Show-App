@@ -1,5 +1,6 @@
 /* Main styles */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 /* Variables */
 
@@ -11,6 +12,7 @@
   --color-neutral-light: #D2D2D2;
   --color-keys: #37474F;
   --color-keys-light: #E5E5E5;
+  --color-borders: #464f67;
   --font-size-large: 60px;
   --font-size-medium: 20px;
   --transition: all .2s ease-in-out;
@@ -27,6 +29,8 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  border-top : 20px var(--color-borders) solid;
+  margin : 0 auto;
 }
 
 li, ol, ul {
@@ -54,6 +58,21 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
 }
+
+p{
+  margin: 0 auto;
+  font-size: 12px;
+  padding: 8px;
+  text-align: center;
+}
+
+footer {
+  margin-top: auto;
+  color: white;
+  background-color: var(--color-borders);
+  font-family: "Ubuntu", sans-serif;
+}
+
 
 .main-container {
   display: flex;
