@@ -1,12 +1,14 @@
 //Variables
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const buttonReset = document.querySelector('.btn__reset');
-const overlay = document.getElementById('overlay');
 const letters = document.getElementsByClassName('letter');
 const shownLetters = document.getElementsByClassName('show');
-const overlayTitle = document.querySelector('h2');
+const overlay = document.getElementById('overlay');
+const ul = document.getElementsByTagName('ul')[0];
 const heart = document.getElementsByTagName('img');
+const buttons = document.getElementsByTagName('button');
+const buttonReset = document.querySelector('.btn__reset');
+const overlayTitle = document.querySelector('h2');
 let missed = 0;
 let reset = false;
 
@@ -51,15 +53,14 @@ function getRandomPhraseAsArray(arr) {
 create a new li if matches a letter and not a space */
 function addPhraseToDisplay(arr) {
    for (let i = 0; i < arr.length; i += 1) {
-      let li = document.createElement('li');
-      let ul = document.getElementsByTagName('ul')[0];
-      li.textContent = arr[i];
-      ul.appendChild(li);
+      const createLi = document.createElement('li');
+      createLi.textContent = arr[i];
+      ul.appendChild(createLi);
       if (arr[i].match(/^[A-Za-z]+$/)) {
-         li.className = 'letter';
+         createLi.className = 'letter';
       }
       else {
-         li.className = 'space';
+         createLi.className = 'space';
       }
    }
 }
@@ -70,11 +71,11 @@ addPhraseToDisplay(phraseArray);
 
 //Function to check if the button clicked match the letter
 function checkLetter(btn) {
-   let guessed = null;
+   let guessed = false;
    for (let i = 0; i < letters.length; i += 1) {
       if (btn.target.textContent === letters[i].textContent.toLowerCase()) {
-         guessed = true;
          letters[i].className += ' show';
+         guessed = true;
       }
    } return guessed;
 }
@@ -90,13 +91,14 @@ function checkWin() {
       overlay.style.display = '';
       overlay.className = 'lose';
       overlayTitle.innerHTML = 'Game Over';
-      buttonReset.textContent = 'Start Again';
+      buttonReset.textContent = 'Start Again!';
       reset = true;
    }
 }
 
-/*Hide the overlay by pressing Start Game, 
-then if won or lost the game reset everything*/
+/*Hide the overlay by clicking Start Game, 
+if won or lost the game overlay appears again,
+and can reset by clicking the button*/
 buttonReset.addEventListener('click', () => {
    overlay.style.display = 'none';
    if (reset === true) {
@@ -104,24 +106,27 @@ buttonReset.addEventListener('click', () => {
       for (i = 0; i < heart.length; i += 1) {
          heart[i].src = 'images/liveHeart.png';
       }
-      for(i = 0; i < letters.length; i += 1){
+      for (i = 0; i < letters.length; i += 1) {
          letters[i].className = 'letter';
       }
-      buttons = document.getElementsByTagName('button');
-      for(i = 0; i < buttons.length; i += 1){
+      for (i = 0; i < buttons.length; i += 1) {
          buttons[i].className = '';
          buttons[i].disabled = false;
       }
-      addPhraseToDisplay(phraseArray);
+      const li = document.querySelectorAll('.letter, .space');
+      for (i = 0; i < li.length; i += 1) {
+         ul.removeChild(li[i]);
+      } const newPhraseArray = getRandomPhraseAsArray(phrases);
+      addPhraseToDisplay(newPhraseArray);
    }
 });
 
 qwerty.addEventListener("click", (event) => {
    letterFound = checkLetter(event);
-   if (event.target.tagName === 'BUTTON'){
+   if (event.target.tagName === 'BUTTON') {
       event.target.className = 'chosen';
       event.target.disabled = true;
-      if (letterFound === null && missed < 5) {
+      if (letterFound === false && missed < 5) {
          missed += 1;
          if (missed === 1) {
             heart[0].src = 'images/lostHeart.png';
