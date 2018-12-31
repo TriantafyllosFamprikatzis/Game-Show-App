@@ -49,6 +49,12 @@ h2 {
   margin: 0;
 }
 
+h3{
+  font-family: 'Fredoka One', cursive;
+  font-size: 27px;
+  color: var(--color-start);
+}
+
 button {
   font-family: 'Fredoka One', cursive;
   margin: 6px;
@@ -187,6 +193,11 @@ footer {
 
 .win {
   background-color: var(--color-win);
+}
+
+.scoreOverlay{
+ z-index:1100;
+ color: #fff;
 }
 
 .win a {
