@@ -17,7 +17,7 @@
   --color-borders: #464f67;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all .3s ease-in-out;
 }
 
 /* main */
@@ -84,7 +84,9 @@ p {
 
 a:hover{
   transform: scale(1.2);
-  transition: all 0.1s  ease-in-out;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
 }
 
 footer {
@@ -137,7 +139,9 @@ footer {
   color: #fff;
   background-color: #76CE82;
   transform: scale(1.2);
-  transition: all 0.3s;
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
 }
 
 /* Keyboard */
