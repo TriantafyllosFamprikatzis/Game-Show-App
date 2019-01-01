@@ -1,6 +1,5 @@
 //Variables
 const qwerty = document.getElementById("qwerty");
-const phrase = document.getElementById("phrase");
 const letters = document.getElementsByClassName("letter");
 const shownLetters = document.getElementsByClassName("show");
 const overlay = document.getElementById("overlay");
@@ -14,13 +13,13 @@ let missed = 0;
 let score = 0;
 let reset = false;
 
-//Score
+//Score default settings
 h3.style.position = "absolute";
 h3.style.left = "25px";
 h3.style.top = "10px";
-h3.textContent = `Score: ${score}`;
+h3.textContent = `Score : ${score}`;
 
-//All phrases
+//Phrases
 const phrases = [
    "A fish out of water",
    "A nest of vipers",
@@ -136,8 +135,8 @@ function getRandomPhraseAsArray(arr) {
    return arr[randomPhrase].split("");
 }
 
-/*loop through the array of letters and, 
-create a new li if matches a letter and not a space */
+/*loop through the array of letters and create a new li,
+change class names depending on if the li has a letter or a space*/
 function addPhraseToDisplay(arr) {
    for (let i = 0; i < arr.length; i += 1) {
       const createLi = document.createElement("li");
@@ -155,7 +154,8 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
-//Function to check if the button clicked match the letter
+/*Check if the button clicked match the letter, if yes show
+and add to the score*/
 function checkLetter(btn) {
    let guessed = false;
    for (let i = 0; i < letters.length; i += 1) {
@@ -163,12 +163,13 @@ function checkLetter(btn) {
          letters[i].className += " show";
          guessed = true;
          score += 50;
-         h3.textContent = `Score: ${score}`;
+         h3.textContent = `Score : ${score}`;
       }
    }
    return guessed;
 }
 
+//Show the respective overlay of win or lose
 function checkWin() {
    if (letters.length === shownLetters.length) {
       overlay.style.display = "";
@@ -178,7 +179,7 @@ function checkWin() {
       reset = true;
       score += 1000;
       h3.className = "scoreOverlay";
-      h3.textContent = `Score: ${score}`;
+      h3.textContent = `Score : ${score}`;
    } else if (missed === 5) {
       overlay.style.display = "";
       overlay.className = "lose";
@@ -186,9 +187,10 @@ function checkWin() {
       buttonReset.textContent = "Start Again!";
       reset = true;
       h3.className = "scoreOverlay";
-      h3.textContent = `Highest Score: ${score}`;
+      h3.textContent = `Highest Score : ${score}`;
    }
 }
+
 
 function resetGame() {
    if (reset === true) {
@@ -221,16 +223,17 @@ buttonReset.addEventListener("click", () => {
       resetGame();
       score = 0;
       h3.className = "score";
-      h3.textContent = `Score: ${score}`;
+      h3.textContent = `Score : ${score}`;
    } else {
       resetGame();
       h3.className = "score";
    }
 });
 
-
+/*This listens to button events and evaluates the info by checkLetter
+and checkWin functions, then decides if to remove a heart*/
 qwerty.addEventListener("click", event => {
-   letterFound = checkLetter(event);
+  const letterFound = checkLetter(event);
    if (event.target.tagName === "BUTTON") {
       event.target.className = "chosen";
       event.target.disabled = true;
