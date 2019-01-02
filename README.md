@@ -4,7 +4,8 @@
 
 In this project, I have created a browser version of "Wheel of Success" or else "Wheel of Fortune", a word guessing game where players will click letters from an onscreen keyboard to try to guess a random phrase.
 
-**GAME RULES** 
+###### GAME RULES 
+
 The player Starts with 5 lives.
 
 Each time the player guesses a letter, 50 points are added to the score count, if the letter chosen isn't in the phrase, one life is removed.
