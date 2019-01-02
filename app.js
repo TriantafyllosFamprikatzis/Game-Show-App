@@ -238,23 +238,8 @@ qwerty.addEventListener("click", event => {
       event.target.className = "chosen";
       event.target.disabled = true;
       if (letterFound === false && missed < 5) {
-         missed += 1;
-         if (missed === 1) {
-            heart[0].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 2) {
-            heart[1].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 3) {
-            heart[2].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 4) {
-            heart[3].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 5) {
-            heart[4].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         }
+          heart[missed].setAttribute('images/lostHeart.png');
+          missed++;
       }
    }
    checkWin();
