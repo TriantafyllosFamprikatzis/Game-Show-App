@@ -233,29 +233,14 @@ buttonReset.addEventListener("click", () => {
 /*This listens to button events and evaluates the info by checkLetter
 and checkWin functions, then decides if to remove a heart*/
 qwerty.addEventListener("click", event => {
-  const letterFound = checkLetter(event);
-   if (event.target.tagName === "BUTTON") {
-      event.target.className = "chosen";
-      event.target.disabled = true;
-      if (letterFound === false && missed < 5) {
-         missed += 1;
-         if (missed === 1) {
-            heart[0].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 2) {
-            heart[1].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 3) {
-            heart[2].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 4) {
-            heart[3].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         } else if (missed === 5) {
-            heart[4].src = "images/lostHeart.png";
-            event.target.disabled = true;
-         }
-      }
-   }
-   checkWin();
-});
+   const letterFound = checkLetter(event);
+    if (event.target.tagName === "BUTTON") {
+       event.target.className = "chosen";
+       event.target.disabled = true;
+       if (letterFound === false && missed < 5) {
+         heart[missed].setAttribute('src', 'images/lostHeart.png');
+         missed++;
+       }
+    }
+    checkWin();
+ });
