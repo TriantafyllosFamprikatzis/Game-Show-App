@@ -1,5 +1,4 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 @import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
 @import url('https://fonts.googleapis.com/css?family=Bungee');
@@ -90,7 +89,7 @@ footer {
   margin-top: auto;
   color: white;
   background-color: var(--color-borders);
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Fredoka One', cursive;
 }
 
 .main-container {
