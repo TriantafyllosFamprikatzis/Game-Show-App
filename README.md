@@ -1,8 +1,6 @@
 ## Game-Show-App
-###### TechDegree-Project-6
 
-
-In this project, I have created a browser version of "Wheel of Success" or else "Wheel of Fortune", a word guessing game where players will click letters from an onscreen keyboard to try to guess a random phrase.
+In this project, I have developed a browser version of "Wheel of Success" or else "Wheel of Fortune", a word guessing game where players will click letters from an onscreen keyboard to try to guess a random phrase.
 
 ###### GAME RULES 
 
